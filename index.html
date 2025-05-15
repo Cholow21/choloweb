@@ -62,7 +62,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+                        url('https://smdc.com/content/webp-express/webp-images/doc-root/content/uploads/2020/04/image-180-3.png.webp');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -102,13 +102,13 @@
             background-color: #ffed4a;
         }
 
-        .features {
+        .features, .units {
             padding: 5rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .features h2 {
+        .features h2, .units h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -143,18 +143,6 @@
             color: white;
             text-align: center;
             padding: 2rem;
-        }
-
-        .units {
-            padding: 5rem 1rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .units h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
         }
 
         .units-grid {
@@ -351,7 +339,7 @@
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             nav ul {
@@ -366,46 +354,28 @@
         }
     </style>
     <script>
-        function showUnitDetails(unitType) {
-            // Hide all unit cards
+        const showUnitDetails = unitType => {
             document.querySelector('.units-grid').style.display = 'none';
             document.querySelector('.units h2').style.display = 'none';
-
-            // Hide all panels first
-            document.querySelectorAll('.unit-details-panel').forEach(panel => {
-                panel.classList.remove('active');
-            });
-
-            // Show the selected panel
+            document.querySelectorAll('.unit-details-panel').forEach(panel => panel.classList.remove('active'));
             document.getElementById(unitType + '-panel').classList.add('active');
-        }
+        };
 
-        function hideUnitDetails() {
-            // Show unit cards
+        const hideUnitDetails = () => {
             document.querySelector('.units-grid').style.display = 'grid';
             document.querySelector('.units h2').style.display = 'block';
+            document.querySelectorAll('.unit-details-panel').forEach(panel => panel.classList.remove('active'));
+        };
 
-            // Hide all panels
-            document.querySelectorAll('.unit-details-panel').forEach(panel => {
-                panel.classList.remove('active');
-            });
-        }
-
-        function showAmenityDetails(amenityType) {
+        const showAmenityDetails = amenityType => {
             const panel = document.getElementById(amenityType + '-amenity-panel');
-            if (panel) {
-                panel.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
-        }
+            if (panel) { panel.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+        };
 
-        function hideAmenityDetails(amenityType) {
+        const hideAmenityDetails = amenityType => {
             const panel = document.getElementById(amenityType + '-amenity-panel');
-            if (panel) {
-                panel.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
+            if (panel) { panel.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        };
     </script>
 </head>
 <body>
@@ -432,25 +402,12 @@
     <section class="features" id="features">
         <h2>Premium Amenities</h2>
         <div class="features-grid">
-            <div class="feature-card" onclick="showAmenityDetails('security')">
-                <h3>24/7 Security</h3>
-                <p>Round-the-clock security personnel and CCTV surveillance for your peace of mind.</p>
-            </div>
-            <div class="feature-card" onclick="showAmenityDetails('pool')">
-                <h3>Swimming Pool</h3>
-                <p>Temperature-controlled infinity pool with stunning city views.</p>
-            </div>
-            <div class="feature-card" onclick="showAmenityDetails('gym')">
-                <h3>Fitness Center</h3>
-                <p>State-of-the-art gym equipment and dedicated yoga space.</p>
-            </div>
-            <div class="feature-card" onclick="showAmenityDetails('lounge')">
-                <h3>Sky Lounge</h3>
-                <p>Exclusive residents' lounge perfect for socializing and relaxation.</p>
-            </div>
+            <div class="feature-card" onclick="showAmenityDetails('security')"><h3>24/7 Security</h3><p>Round-the-clock security personnel and CCTV surveillance for your peace of mind.</p></div>
+            <div class="feature-card" onclick="showAmenityDetails('pool')"><h3>Swimming Pool</h3><p>Temperature-controlled infinity pool with stunning city views.</p></div>
+            <div class="feature-card" onclick="showAmenityDetails('gym')"><h3>Fitness Center</h3><p>State-of-the-art gym equipment and dedicated yoga space.</p></div>
+            <div class="feature-card" onclick="showAmenityDetails('lounge')"><h3>Sky Lounge</h3><p>Exclusive residents' lounge perfect for socializing and relaxation.</p></div>
         </div>
 
-        <!-- Security Amenity Details -->
         <div id="security-amenity-panel" class="amenity-details-panel">
             <div class="amenity-content">
                 <button class="close-button" onclick="hideAmenityDetails('security')">×</button>
@@ -460,48 +417,17 @@
                     <img src="https://images.unsplash.com/photo-1577962146641-c4dacf36eaa2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Security Access Control">
                 </div>
                 <div class="amenity-description">
-                    <p>At Mezza Residences, your safety is our utmost priority. Our multi-layered security system combines professional security personnel, advanced surveillance technology, and strict access control protocols to ensure the safety and privacy of our residents 24 hours a day, 7 days a week.</p>
+                    <p>At Mezza Residences, your safety is our utmost priority. Our multi-layered security system combines professional security personnel, advanced surveillance technology, and strict access control protocols.</p>
                 </div>
                 <div class="amenity-features">
-                    <div class="amenity-feature">
-                        <h4>Professional Security Team</h4>
-                        <p>Licensed security personnel with residential property expertise, stationed at strategic points throughout the complex</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Access Management System</h4>
-                        <p>Multi-factor authentication system with RFID cards and biometric scanning for residents</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Surveillance Network</h4>
-                        <p>High-definition CCTV cameras with night vision capability monitoring all common areas and perimeters 24/7</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Visitor Management</h4>
-                        <p>Computerized visitor registration system with real-time resident notification and authorization</p>
-                    </div>
-                </div>
-                <div class="amenity-features" style="margin-top: 1rem;">
-                    <div class="amenity-feature">
-                        <h4>Emergency Response Protocol</h4>
-                        <p>Dedicated emergency response team with direct coordination with local authorities</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Intercom Integration</h4>
-                        <p>Video intercom system connecting all units to the security command center</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Parking Security</h4>
-                        <p>Secured parking areas with dedicated patrol and automated gate systems</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Security Audit</h4>
-                        <p>Regular security assessments and protocol updates to maintain highest safety standards</p>
-                    </div>
+                    <div class="amenity-feature"><h4>Professional Security Team</h4><p>Licensed security personnel with residential property expertise</p></div>
+                    <div class="amenity-feature"><h4>Access Management System</h4><p>Multi-factor authentication system with RFID cards and biometric scanning</p></div>
+                    <div class="amenity-feature"><h4>Surveillance Network</h4><p>High-definition CCTV cameras with night vision capability</p></div>
+                    <div class="amenity-feature"><h4>Visitor Management</h4><p>Computerized visitor registration system with real-time notifications</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Pool Amenity Details -->
         <div id="pool-amenity-panel" class="amenity-details-panel">
             <div class="amenity-content">
                 <button class="close-button" onclick="hideAmenityDetails('pool')">×</button>
@@ -510,31 +436,15 @@
                     <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Infinity Pool">
                     <img src="https://images.unsplash.com/photo-1623718649591-311775a30c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pool Lounging Area">
                 </div>
-                <div class="amenity-description">
-                    <p>Experience luxury swimming with our temperature-controlled infinity pool offering breathtaking views of the city skyline. The pool area features comfortable loungers and a poolside service area.</p>
-                </div>
                 <div class="amenity-features">
-                    <div class="amenity-feature">
-                        <h4>Temperature Control</h4>
-                        <p>Year-round comfortable swimming temperature</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Infinity Edge</h4>
-                        <p>Seamless views of the city skyline</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Pool Deck</h4>
-                        <p>Premium loungers and umbrellas</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Safety Features</h4>
-                        <p>Trained lifeguard during operating hours</p>
-                    </div>
+                    <div class="amenity-feature"><h4>Temperature Control</h4><p>Year-round comfortable swimming</p></div>
+                    <div class="amenity-feature"><h4>Infinity Edge</h4><p>Seamless views of the city skyline</p></div>
+                    <div class="amenity-feature"><h4>Pool Deck</h4><p>Premium loungers and umbrellas</p></div>
+                    <div class="amenity-feature"><h4>Safety Features</h4><p>Trained lifeguard during operating hours</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Gym Amenity Details -->
         <div id="gym-amenity-panel" class="amenity-details-panel">
             <div class="amenity-content">
                 <button class="close-button" onclick="hideAmenityDetails('gym')">×</button>
@@ -543,31 +453,15 @@
                     <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Modern Gym Equipment">
                     <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Yoga Studio">
                 </div>
-                <div class="amenity-description">
-                    <p>Our fully-equipped fitness center features premium cardio and strength training equipment, along with a dedicated yoga studio. Professional trainers are available for personal training sessions.</p>
-                </div>
                 <div class="amenity-features">
-                    <div class="amenity-feature">
-                        <h4>Premium Equipment</h4>
-                        <p>Latest cardio and strength training machines</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Yoga Studio</h4>
-                        <p>Dedicated space for yoga and stretching</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Personal Training</h4>
-                        <p>Professional trainers available</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>24/7 Access</h4>
-                        <p>Round-the-clock access for residents</p>
-                    </div>
+                    <div class="amenity-feature"><h4>Premium Equipment</h4><p>Latest cardio and strength training machines</p></div>
+                    <div class="amenity-feature"><h4>Yoga Studio</h4><p>Dedicated space for yoga and stretching</p></div>
+                    <div class="amenity-feature"><h4>Personal Training</h4><p>Professional trainers available</p></div>
+                    <div class="amenity-feature"><h4>24/7 Access</h4><p>Round-the-clock access for residents</p></div>
                 </div>
             </div>
         </div>
 
-        <!-- Lounge Amenity Details -->
         <div id="lounge-amenity-panel" class="amenity-details-panel">
             <div class="amenity-content">
                 <button class="close-button" onclick="hideAmenityDetails('lounge')">×</button>
@@ -576,26 +470,11 @@
                     <img src="https://images.unsplash.com/photo-1629371997433-d11e6161a8b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sky Lounge Interior">
                     <img src="https://images.unsplash.com/photo-1606744888344-493238951221?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lounge City View">
                 </div>
-                <div class="amenity-description">
-                    <p>Our sky lounge offers a sophisticated space for relaxation and socializing, featuring comfortable seating areas, a coffee bar, and stunning panoramic views of the city.</p>
-                </div>
                 <div class="amenity-features">
-                    <div class="amenity-feature">
-                        <h4>Panoramic Views</h4>
-                        <p>Floor-to-ceiling windows with city views</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Coffee Bar</h4>
-                        <p>Complimentary coffee and tea service</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Business Center</h4>
-                        <p>Work stations with high-speed internet</p>
-                    </div>
-                    <div class="amenity-feature">
-                        <h4>Event Space</h4>
-                        <p>Available for private functions</p>
-                    </div>
+                    <div class="amenity-feature"><h4>Panoramic Views</h4><p>Floor-to-ceiling windows with city views</p></div>
+                    <div class="amenity-feature"><h4>Coffee Bar</h4><p>Complimentary coffee and tea service</p></div>
+                    <div class="amenity-feature"><h4>Business Center</h4><p>Work stations with high-speed internet</p></div>
+                    <div class="amenity-feature"><h4>Event Space</h4><p>Available for private functions</p></div>
                 </div>
             </div>
         </div>
@@ -606,82 +485,23 @@
         <div class="units-grid">
             <div class="unit-card" onclick="showUnitDetails('studio')">
                 <div class="unit-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                <div class="unit-content">
-                    <h3>Studio Unit</h3>
-                    <p class="unit-size">24-28 sqm</p>
-                    <ul class="unit-features">
-                        <li>Perfect for singles or couples</li>
-                        <li>Modern open-plan layout</li>
-                        <li>Built-in wardrobe</li>
-                        <li>Kitchenette</li>
-                        <li>Full bathroom</li>
-                    </ul>
-                    <p class="unit-price">Starting at ₱3.5M</p>
-                </div>
+                <div class="unit-content"><h3>Studio Unit</h3><p class="unit-size">24-28 sqm</p><p class="unit-price">Starting at ₱3.5M</p></div>
             </div>
-
             <div class="unit-card" onclick="showUnitDetails('one-bedroom')">
                 <div class="unit-image" style="background-image: url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                <div class="unit-content">
-                    <h3>One Bedroom</h3>
-                    <p class="unit-size">36-42 sqm</p>
-                    <ul class="unit-features">
-                        <li>Separate bedroom</li>
-                        <li>Spacious living area</li>
-                        <li>Modern kitchen</li>
-                        <li>Built-in closet</li>
-                        <li>Balcony in select units</li>
-                    </ul>
-                    <p class="unit-price">Starting at ₱5.2M</p>
-                </div>
+                <div class="unit-content"><h3>One Bedroom</h3><p class="unit-size">36-42 sqm</p><p class="unit-price">Starting at ₱5.2M</p></div>
             </div>
-
             <div class="unit-card" onclick="showUnitDetails('two-bedroom')">
                 <div class="unit-image" style="background-image: url('https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                <div class="unit-content">
-                    <h3>Two Bedroom</h3>
-                    <p class="unit-size">54-60 sqm</p>
-                    <ul class="unit-features">
-                        <li>Master bedroom with en-suite</li>
-                        <li>Secondary bedroom</li>
-                        <li>Spacious living and dining area</li>
-                        <li>Full kitchen with breakfast bar</li>
-                        <li>Large balcony with city views</li>
-                    </ul>
-                    <p class="unit-price">Starting at ₱7.8M</p>
-                </div>
+                <div class="unit-content"><h3>Two Bedroom</h3><p class="unit-size">54-60 sqm</p><p class="unit-price">Starting at ₱7.8M</p></div>
             </div>
-
             <div class="unit-card" onclick="showUnitDetails('three-bedroom')">
                 <div class="unit-image" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                <div class="unit-content">
-                    <h3>Three Bedroom</h3>
-                    <p class="unit-size">86-92 sqm</p>
-                    <ul class="unit-features">
-                        <li>Master bedroom with walk-in closet</li>
-                        <li>Two secondary bedrooms</li>
-                        <li>Separate living and dining areas</li>
-                        <li>Modern kitchen with island</li>
-                        <li>Two balconies with panoramic views</li>
-                    </ul>
-                    <p class="unit-price">Starting at ₱12.5M</p>
-                </div>
+                <div class="unit-content"><h3>Three Bedroom</h3><p class="unit-size">86-92 sqm</p><p class="unit-price">Starting at ₱12.5M</p></div>
             </div>
-
             <div class="unit-card" onclick="showUnitDetails('penthouse')">
                 <div class="unit-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                <div class="unit-content">
-                    <h3>Penthouse Suite</h3>
-                    <p class="unit-size">180-200 sqm</p>
-                    <ul class="unit-features">
-                        <li>Luxury master suite with city views</li>
-                        <li>Private roof deck</li>
-                        <li>Designer kitchen</li>
-                        <li>Entertainment area</li>
-                        <li>Premium finishes throughout</li>
-                    </ul>
-                    <p class="unit-price">Starting at ₱25M</p>
-                </div>
+                <div class="unit-content"><h3>Penthouse Suite</h3><p class="unit-size">180-200 sqm</p><p class="unit-price">Starting at ₱25M</p></div>
             </div>
         </div>
 
@@ -863,10 +683,12 @@
         </div>
     </section>
 
-    <footer id="contact">
-        <p>Contact us at: info@mezzaresidences.com</p>
-        <p>Visit us: 123 City Center, Metro Manila</p>
-        <p>&copy; 2024 Mezza Residences. All rights reserved.</p>
-    </footer>
+    <section id="contact" class="contact">
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Visit our showroom: 123 Main Street, Metro Manila<br>Phone: (02) 8123-4567<br>Email: info@mezzaresidences.com</p>
+            <p>&copy; 2024 Mezza Residences. All rights reserved.</p>
+        </div>
+    </section>
 </body>
 </html>
