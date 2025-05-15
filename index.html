@@ -352,6 +352,60 @@
                 margin: 0 auto;
             }
         }
+
+        .contact {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .contact h2 {
+            color: #ffd700;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            margin-top: 2rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: #ffd700;
+            color: #1a1a1a;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 1rem;
+            text-align: center;
+            background: #1a1a1a;
+            color: white;
+        }
     </style>
     <script>
         const showUnitDetails = unitType => {
@@ -394,7 +448,11 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Welcome to Mezza Residences</h1>
-            <p>Experience luxury living in the heart of the city. Modern amenities, stunning views, and unparalleled comfort await you.</p>
+            <p>Found at the corner of Aurora Boulevard and Araneta Avenue and near SM City Sta. Mesa, <br>
+                SMDC Mezza Residences proves to be one of the most conveniently-placed condominium complexes 
+                where residents can enjoy great shopping and dining choices.
+
+            </p>
             <a href="#contact" class="cta-button">Schedule a Viewing</a>
         </div>
     </section>
@@ -684,11 +742,26 @@
     </section>
 
     <section id="contact" class="contact">
-        <div class="contact-info">
+        <div class="contact-container">
             <h2>Contact Us</h2>
-            <p>Visit our showroom: 123 Main Street, Metro Manila<br>Phone: (02) 8123-4567<br>Email: info@mezzaresidences.com</p>
-            <p>&copy; 2024 Mezza Residences. All rights reserved.</p>
+            <div class="contact-info">
+                <p>📍 123 Main Street, Metro Manila</p>
+                <p>📞 (02) 8123-4567</p>
+                <p>✉️ info@mezzaresidences.com</p>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2024 Mezza Residences. All rights reserved.</p>
+    </footer>
 </body>
 </html>
